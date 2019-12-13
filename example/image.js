@@ -7,6 +7,8 @@ const { uploadFile } = require('../lib/uploadimage')
 
 const app = new Koa()
 
+console.log('>>>>>>', require.resolve.paths(uploadFile))
+
 /**
  * 使用第三方中间件 start 
  */
@@ -35,7 +37,6 @@ app.use( async ( ctx ) => {
     // 上传文件请求处理
     let result = { success: false }
     let serverFilePath = path.join( __dirname, 'static/image' )
-
     // 上传文件事件
     result = await uploadFile( ctx, {
       fileType: 'album',
